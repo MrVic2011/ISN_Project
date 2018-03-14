@@ -1,20 +1,25 @@
 # Imports
 import pygame
 from pygame.locals import *
+from core.Level import Level
 
 
 # Main
 def main():
     pygame.init()
     screen = pygame.display.set_mode((640, 480))
+
+    # Class initialization
+    level = Level(screen, 1)
+
     statement_keys = [False, False, False, False]
     player_pos = [50, 50]
-    player_speed = 0.1
+    player_speed = 0.4
 
     continuer = True
     while continuer:
-
         display_background(screen)
+        level.display_wall(screen)
         spawn_player(screen, player_pos)
 
         pygame.display.flip()
@@ -44,12 +49,16 @@ def main():
 
         if statement_keys[0]:
             player_pos[1] -= player_speed
+            level.level_collision(player_pos)
         elif statement_keys[2]:
             player_pos[1] += player_speed
+            level.level_collision(player_pos)
         if statement_keys[1]:
             player_pos[0] -= player_speed
+            level.level_collision(player_pos)
         elif statement_keys[3]:
             player_pos[0] += player_speed
+            level.level_collision(player_pos)
 
     pygame.quit()
 
