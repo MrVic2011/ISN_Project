@@ -1,8 +1,13 @@
+import sys
+sys.path.append(".")
+
+
 # Imports
 import pygame
 from pygame.locals import *
 from core.Level import Level
 from core.Player import Player
+
 
 
 # Main
@@ -12,7 +17,7 @@ def main():
 
     # Class initialization
     level = Level(1)
-    player = Player(50, 50, 0.4)
+    player = Player(50, 125, 0.4)
 
     continuer = True
     while continuer:
@@ -47,7 +52,7 @@ def main():
                 if event.key == K_d:
                     player.statement_keys[3] = False
 
-        player.move(screen)
+        player.move(screen, level)
 
     pygame.quit()
 
