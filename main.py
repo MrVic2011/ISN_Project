@@ -1,13 +1,8 @@
-import sys
-sys.path.append(".")
-
-
 # Imports
 import pygame
 from pygame.locals import *
 from core.Level import Level
 from core.Player import Player
-
 
 
 # Main
