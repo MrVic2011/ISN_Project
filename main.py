@@ -7,6 +7,9 @@ from core.Player import Player
 
 # Main
 def main():
+    """
+    Main process of the game. Execute all classes and manage event returned by pygame
+    """
     pygame.init()
     screen = pygame.display.set_mode((640, 480))
 

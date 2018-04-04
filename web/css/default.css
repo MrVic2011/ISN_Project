@@ -1,0 +1,13 @@
+.custom-header {
+  border-bottom: 1px solid #34495E;
+  margin-bottom: 0;
+}
+.custom-title {
+  border-bottom: 1px solid #34495E;
+  margin-bottom: 10px;
+}
+.bottom-margin {
+  border-top: 1px solid #34495E;
+  margin-top: 60px;
+  padding-top: 30px;
+}

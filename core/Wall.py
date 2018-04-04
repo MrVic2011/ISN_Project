@@ -12,6 +12,12 @@ class Wall:
         self.width = width
 
     def check_collides(self, player, direction):
+        """
+        Method to check if the player try to move in a wall
+        :param player: an instance of PLayer CLass
+        :param direction: player moving direction
+        :return: True if the player new postion is in a wall. False if not
+        """
         px, py = player.pos
         pw, ph = player.size
         wx, wy = self.pos

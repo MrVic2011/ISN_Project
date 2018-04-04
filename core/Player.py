@@ -8,8 +8,6 @@ class Player:
     """
 
     def __init__(self, x, y, speed):
-
-        # PLayer img
         # PLayer statistics and state attributes
         self.pos = [x, y]
         self.size = [50, 50]
@@ -22,14 +20,13 @@ class Player:
         show the player on the screen
         :param window: pygame Surface object
         """
-        # window.blit(self.direction, (self.position[0], self.position[1]))
         square = pygame.Rect(self.pos[0], self.pos[1], self.size[0], self.size[1])
         player_color = (243, 0, 0)
         pygame.draw.rect(window, player_color, square)
 
     def move(self, window, level):
         """
-        move the player in the direction of True's keys in statement_keys attribut
+        move the player in the direction of True's keys in statement_keys list
         :param level: instance of Level Class
         :param window: pygame Surface object
         """

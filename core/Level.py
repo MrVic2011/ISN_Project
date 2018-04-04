@@ -28,12 +28,22 @@ class Level:
         self.wall_list.append(wall)
 
     def display_wall(self, window):
+        """
+        Method to draw a black square at the postion of each wall in the wall list of the Level instance
+        :param window: pygame Surface object
+        """
         for wall in self.wall_list:
             square = pygame.Rect(wall.pos[0], wall.pos[1], wall.width, wall.height)
             color = (0, 0, 0)
             pygame.draw.rect(window, color, square)
 
     def collides(self, player, direction):
+        """
+        Method to check with each wall of the level if the player try to pass through a wall
+        :param player: instance of PLayer CLass
+        :param direction: "UP", "DOWN", "LEFT" or "RIGHT" - Player moving direction
+        :return:
+        """
         for wall in self.wall_list:
             collides = wall.check_collides(player, direction)
             if collides:

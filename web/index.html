@@ -1,0 +1,99 @@
+<!DOCType HTML>
+<html>
+<head lang="fr">
+    <link rel="stylesheet" type="text/css" href="css/default.less"/>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="icons"
+          href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/vendor/bootstrap/fonts/glyphicons-halflings-regular.svg">
+    <title>Projet ISN</title>
+</head>
+<body>
+    <div class="container">
+        <div class="custom-header">
+            <div class="row">
+                <div class="col-md-12 text-center"><h1>Projet ISN</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center"><h5>Victor LE CORRE</h5></div>
+                <div class="col-md-4 text-center"><h5>Adrien RENODAU</h5></div>
+                <div class="col-md-4 text-center"><h5>Arezou ZOEE</h5></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 text-center custom-title"><h4>Objectif</h4></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Création d’un jeu d’action-aventure en 2D, s’inspirant de l’univers fantasy-science fiction (type Zelda) pour le gameplay et d’un univers post-apocalyptique pour l’histoire et les graphismes.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 text-center custom-title"><h4>Caractéristiques</h4></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Le code est réparti dans plusieurs modules et fichiers. Le projet adopte une architecture orientée objet. Il comprend un fichier principal où toutes les classes sont appelées et exécutées, tandis que toutes nos méthodes (musique,  joueur,  item,  etc) sont réparties dans des classes. Ainsi, nous avons un code plus lisible et plus facilement modifiable. De plus, ce procédé nous permet de mieux distribuer la répartition des tâches dans l’équipe. 
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 text-center custom-title"><h4>Grandes étapes</h4></div>
+            <div class="col-sm-offset-3 col-sm-6 text-center"><h6>1. Victor: <b>Gestion du joueur, des ennemies et de leur intéraction avec les niveaux</b></h6></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Création de classes pour le joueur, les ennemies, le niveau et les murs. La classe “Player” gérant les méthodes en lien avec le joueur comme les mouvements, la classe “Enemies” gère quant à elle toutes les méthodes (déplacement, attaque, etc) liées aux ennemies rencontrées par le joueur. La classe “Level” gère les niveaux et fait donc le lien entre toutes les classes du jeu et la boucle principale d'exécution du script. Pour finir la classe “Wall” réalise les calculs de position du joueur et des ennemies dans les collisions avec le décor et travaille donc de pair avec la classe “Level”.
+                </p>
+            </div>
+            <div class="col-sm-offset-3 col-sm-6 text-center"><h6>2. Adrien: <b>Classe Music et Item</b></h6></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Développement d’une classe “Sound” pour la musique du jeu afin de pouvoir régler le son et les effets spéciaux durant la partie.  Développement d’une classe “Item” regroupant les différentes armes, amélioration du joueur et des ennemis rencontrés, générés selon les niveaux. Ces objets seront ramassables dans les niveaux directement sur le sol ou sur un ennemie après l’avoir tué.
+                </p>
+            </div>
+            <div class="col-sm-offset-3 col-sm-6 text-center"><h6>3. Arezou: <b>Ressources graphiques et sonores pour le jeu, Design des niveaux</b></h6></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Rassemblement des ressources pour le jeu tels que les sprites du joueur et des ennemies, des éléments graphiques pour le décor, des musiques d’ambiances et des sons pour les effets. Réflexion sur le design des niveaux (placements des murs, ennemies, objets ramassables, etc…). Travail sur les méthodes pour réaliser une animation lors du déplacement du joueur, de ses attaques ou celles des ennemies.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 text-center custom-title"><h4>Difficultés rencontrées</h4></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Au cours des quelques semaines de développement du projet, nous avons rencontrés plusieurs difficultés. Notamment au début du projet, où nous avions tout notre code sur le même fichier ce qui nous a vite ralentit car le code était devenu compliqué à lire et à comprendre. Nous avons donc pris la décision de reformater tout le code en adoptant une orientation objet. Notre deuxième difficulté fut notre manque d'assiduité dans les annotations de notre code, en effet en rentrant des vacances de février après 2 semaines de pause dans le développement nous avons eu du mal à nous relancer car nous n’avions quasiment pas annoté notre code ce qui rendait difficile la relecture de celui-ci. Par la suite, nous avons donc travaillé à plus appliquer les “bonnes pratiques” dans la rédaction de notre code. Notre dernière difficulté en date fut la gestion des collisions entre le joueur et le décor. En effet, cela impliquait des calculs de position et un algorithme plus complexe nous demandant un effort plus important et également l’aide de Mr.Tummarello.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 text-center custom-title"><h4>Ajouts prévus pour la mise à jour final</h4></div>
+            <div class="col-sm-12 text-center">
+                <p>
+                    Pour la mise à jour final, nombreuses sont les fonctionnalités qu’ils nous restent à implémenter. Ainsi nous avons pour souhait de rajouter :
+                </p>
+            </div>
+            <div class="col-sm-12">
+                <ul>
+                    <li>Des ennemies avec un déplacement automatique et la capacité d’attaquer le joueur</li>
+                    <li>Des graphismes 2D et des animations</li>
+                    <li>Des objets récupérables dans le niveau et utilisable par le joueur (armes, armure, etc…)</li>
+                    <li>Plusieurs niveaux dans le jeu et une difficulté réglable</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 bottom-margin"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <p>
+                    Le code source du projet est disponible sur <a href="https://goo.gl/ktnPFq"><b>GitHub</b></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
