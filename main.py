@@ -1,6 +1,8 @@
 # Imports
 import pygame
 from pygame.locals import *
+
+from core.Bullet import Bullet
 from core.Level import Level
 from core.Player import Player
 
@@ -19,8 +21,9 @@ def main():
 
     continuer = True
     while continuer:
-        display_background(screen)
+        level.display_background(screen)
         level.display_wall(screen)
+        level.display_bullets(screen)
         player.display_player(screen)
 
         pygame.display.flip()
@@ -50,15 +53,14 @@ def main():
                 if event.key == K_d:
                     player.statement_keys[3] = False
 
+            if event.type == KEYDOWN and event.key == K_SPACE:
+                tmp = Bullet(player)
+                level.bullets.append(tmp)
+
         player.move(screen, level)
+        level.update_sprites()
 
     pygame.quit()
-
-
-# Functions
-def display_background(window):
-    background = (200, 200, 200)
-    window.fill(background)
 
 
 main()
