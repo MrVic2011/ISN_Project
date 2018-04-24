@@ -4,6 +4,7 @@ from pygame.locals import *
 
 from core.Bullet import Bullet
 from core.Level import Level
+from core.Menu import Menu
 from core.Player import Player
 
 
@@ -18,9 +19,28 @@ def main():
     # Class initialization
     level = Level(1)
     player = Player(50, 125, 0.4)
+    interface = Menu()
 
-    continuer = True
-    while continuer:
+    game = False
+    menu = True
+    while menu:
+        interface.spawn_btn()
+        interface.display_btn(screen)
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                menu = False
+            if event.type == KEYDOWN and event.key == K_F1:
+                menu = False
+
+            if event.type == MOUSEBUTTONDOWN and event.button == 1:
+                if interface.btn_clicked(event):
+                    print(event)
+                    game = True
+                    menu = False
+
+    while game:
         level.display_background(screen)
         level.display_wall(screen)
         level.display_bullets(screen)
@@ -30,7 +50,9 @@ def main():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                continuer = False
+                game = False
+            if event.type == KEYDOWN and event.key == K_F1:
+                game = False
 
             # PLayer movement event check
             if event.type == KEYDOWN:

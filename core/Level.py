@@ -12,7 +12,7 @@ class Level:
         self.wall_list = []
         self.bullets = []
         self.id = str(level_id)
-        self.file = open("D:\Programmation\Lab\ISN_Git\levels\lvl_" + self.id + ".txt")
+        self.file = open("./levels/lvl_" + self.id + ".txt")
         print("Level {0} created".format(self.id))
         self.generate_level()
 
@@ -36,26 +36,25 @@ class Level:
             file_line = self.file.readline()
 
         self.file.close()
-        print(self.wall_list)
 
     def generate_wall(self, string):
         """
         Method to initialize each wall of the level using the class Wall
         """
-        indice1 = string.find(' ')
-        indice2 = string.find(' ', indice1 + 1)
-        indice3 = string.find(' ', indice2 + 1)
+        index1 = string.find(' ')
+        index2 = string.find(' ', index1 + 1)
+        index3 = string.find(' ', index2 + 1)
 
-        wx = string[0:indice1]
+        wx = string[0:index1]
         wx = int(wx)
 
-        wy = string[indice1 + 1:indice2]
+        wy = string[index1 + 1:index2]
         wy = int(wy)
 
-        ww = string[indice2 + 1:indice3]
+        ww = string[index2 + 1:index3]
         ww = int(ww)
 
-        wh = string[indice3 + 1:len(string)]
+        wh = string[index3 + 1:len(string)]
         wh = int(wh)
 
         wall = Wall(wx, wy, ww, wh)
