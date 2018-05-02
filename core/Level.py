@@ -78,7 +78,7 @@ class Level:
         :return:
         """
         for wall in self.wall_list:
-            collides = wall.check_collides(player, direction)
+            collides = wall.check_collides(player)
             if collides:
                 player.pos[0] = round(player.pos[0])
                 player.pos[1] = round(player.pos[1])

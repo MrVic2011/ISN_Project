@@ -1,4 +1,3 @@
-import bcolors
 import pygame
 
 
@@ -32,33 +31,25 @@ class Player:
         """
 
         if self.statement_keys[0]:
-            collide = level.collides(self, "UP")
-            if collide:
-                print(bcolors.OKMSG + "collide UP")
+            collide = level.collides(self)
             if not collide:
                 self.pos[1] -= self.speed
             self.display_player(window)
 
         if self.statement_keys[1]:
-            collide = level.collides(self, "LEFT")
-            if collide:
-                print(bcolors.OKMSG + "collide LEFT")
+            collide = level.collides(self)
             if not collide:
                 self.pos[0] -= self.speed
             self.display_player(window)
 
         if self.statement_keys[2]:
-            collide = level.collides(self, "DOWN")
-            if collide:
-                print(bcolors.OKMSG + "collide DOWN")
+            collide = level.collides(self)
             if not collide:
                 self.pos[1] += self.speed
             self.display_player(window)
 
         if self.statement_keys[3]:
-            collide = level.collides(self, "RIGHT")
-            if collide:
-                print(bcolors.OKMSG + "collide RIGHT")
+            collide = level.collides(self)
             if not collide:
                 self.pos[0] += self.speed
             self.display_player(window)

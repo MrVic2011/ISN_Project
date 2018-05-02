@@ -2,6 +2,8 @@
 import pygame
 from pygame.locals import *
 
+from constants import *
+
 from core.Bullet import Bullet
 from core.Level import Level
 from core.Menu import Menu
@@ -11,10 +13,11 @@ from core.Player import Player
 # Main
 def main():
     """
-    Main process of the game. Execute all classes and manage event returned by pygame
+    Main process of the game.
+    Execute all classes and manage event returned by pygame
     """
     pygame.init()
-    screen = pygame.display.set_mode((640, 480))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # Class initialization
     level = Level(1)
@@ -36,7 +39,6 @@ def main():
 
             if event.type == MOUSEBUTTONDOWN and event.button == 1:
                 if interface.btn_clicked(event):
-                    print(event)
                     game = True
                     menu = False
 
