@@ -19,16 +19,18 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    # Class initialization
-    level = Level(1)
-    player = Player(50, 125, 0.4)
+    # Menu
     interface = Menu()
 
     game = False
     menu = True
+    lvl_nbr = 1
+
     while menu:
+        interface.background(screen)
         interface.spawn_btn()
         interface.display_btn(screen)
+        interface.display_lvl(screen, lvl_nbr)
         pygame.display.flip()
 
         for event in pygame.event.get():
@@ -38,10 +40,21 @@ def main():
                 menu = False
 
             if event.type == MOUSEBUTTONDOWN and event.button == 1:
-                if interface.btn_clicked(event):
+                # Play Button
+                btn_return = interface.btn_clicked(event)
+                if btn_return == (True, 1):
                     game = True
                     menu = False
+                if btn_return == (True, 2) and 1 <= lvl_nbr < LEVEL_NUMBER:
+                    lvl_nbr += 1
+                elif btn_return == (True, 3) and 1 < lvl_nbr <= LEVEL_NUMBER:
+                    lvl_nbr -= 1
 
+    # Level Initialization
+    level = Level(lvl_nbr)
+    player = Player(50, 125, 0.4)
+
+    # Game
     while game:
         level.display_background(screen)
         level.display_wall(screen)

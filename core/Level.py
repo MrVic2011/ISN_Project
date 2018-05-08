@@ -70,11 +70,10 @@ class Level:
             color = (0, 0, 0)
             pygame.draw.rect(window, color, square)
 
-    def collides(self, player, direction):
+    def collides(self, player):
         """
         Method to check with each wall of the level if the player try to pass through a wall
         :param player: instance of PLayer CLass
-        :param direction: "UP", "DOWN", "LEFT" or "RIGHT" - Player moving direction
         :return:
         """
         for wall in self.wall_list:
