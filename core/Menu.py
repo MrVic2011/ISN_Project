@@ -14,6 +14,8 @@ class Menu:
         self.btn_list = []
         self.font = pygame.font.Font("./assets/font/doublefeature.ttf", 30)
 
+        self.spawn_btn()
+
     def spawn_btn(self):
         """
         Method of listing all menu's buttons
@@ -47,15 +49,15 @@ class Menu:
         tmp = Button(3, tmp_p1, tmp_p2, 50, 50, tmp_msg)
         self.btn_list.append(tmp)
 
-    def display_btn(self, window):
+    def display_btn(self, window, back_color):
         """
         Method for displaying all buttons of btn_list attribute
         :param window: Pygame Surface object
         """
         for btn in self.btn_list:
-            # Drawing the background of the button
+            # Drawing the display_background of the button
             square = pygame.Rect(btn.pos[0], btn.pos[1], btn.width, btn.height)
-            color = (34, 139, 34)
+            color = back_color
             pygame.draw.rect(window, color, square)
 
             # Center the text of the button
@@ -79,9 +81,9 @@ class Menu:
         """
         for btn in self.btn_list:
             if btn.clicked(mouse):
-                return True, btn.id
+                return btn.id
 
-        return False
+        return None
 
     def display_lvl(self, window, lvl_id):
         """
@@ -115,12 +117,23 @@ class Menu:
         window.blit(text, (txt_pos[0], txt_pos[1]))
 
     @staticmethod
-    def background(window):
+    def display_background(window):
         """
-        Display the background of the Menu
+        Display the display_background of the Menu
         :return:
         """
         window.fill((0, 0, 0))
+
+    def update(self, window, lvl_number):
+        """
+        Method to update all elements on the menu
+        :param lvl_number:
+        :type window:
+        :return:
+        """
+        self.display_background(window)
+        self.display_btn(window, (34, 139, 34))
+        self.display_lvl(window, lvl_number)
 
 
 class Button:

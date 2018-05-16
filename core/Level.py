@@ -4,22 +4,24 @@ from core.Wall import Wall
 
 
 class Level:
-
     """
     Class to generate the selected level from a file and manage all actions that happend in the level
     """
+
     def __init__(self, level_id):
         self.wall_list = []
         self.bullets = []
         self.id = str(level_id)
         self.file = open("./levels/lvl_" + self.id + ".txt")
+
         print("Level {0} created".format(self.id))
+
         self.generate_level()
 
     @staticmethod
     def display_background(window):
         """
-        Method to display a background on the game screen
+        Method to display a display_background on the game screen
         :param window: pygame Surface object
         """
         background = (200, 200, 200)
@@ -70,19 +72,26 @@ class Level:
             color = (0, 0, 0)
             pygame.draw.rect(window, color, square)
 
+    """
     def collides(self, player):
-        """
+        "\""
         Method to check with each wall of the level if the player try to pass through a wall
         :param player: instance of PLayer CLass
         :return:
-        """
+        "\""
         for wall in self.wall_list:
             collides = wall.check_collides(player)
             if collides:
-                player.pos[0] = round(player.pos[0])
-                player.pos[1] = round(player.pos[1])
                 return True
         return False
+    """
+
+    def get_constraints(self, player, direction):
+        for wall in self.wall_list:
+            c = wall.get_constraints(player, direction)
+            if c is not None:
+                return c
+        return None
 
     def display_bullets(self, window):
         """
@@ -95,10 +104,16 @@ class Level:
             color = (0, 255, 0)
             pygame.draw.rect(window, color, square)
 
-    def update_sprites(self):
+    def update_sprites(self, window, player):
         """
         Method to upadate sprties on the screen with their new positions
         :return:
         """
         for bullet in self.bullets:
             bullet.update()
+
+        # Graphics Update for all elements on screen
+        self.display_background(window)
+        self.display_wall(window)
+        self.display_bullets(window)
+        player.display(window)
