@@ -72,21 +72,13 @@ class Level:
             color = (0, 0, 0)
             pygame.draw.rect(window, color, square)
 
-    """
-    def collides(self, player):
-        "\""
-        Method to check with each wall of the level if the player try to pass through a wall
-        :param player: instance of PLayer CLass
-        :return:
-        "\""
-        for wall in self.wall_list:
-            collides = wall.check_collides(player)
-            if collides:
-                return True
-        return False
-    """
-
     def get_constraints(self, player, direction):
+        """
+        Method to check for each wall if the player is touching it
+        :param player:
+        :param direction:
+        :return:
+        """
         for wall in self.wall_list:
             c = wall.get_constraints(player, direction)
             if c is not None:

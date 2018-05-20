@@ -52,6 +52,7 @@ class Menu:
     def display_btn(self, window, back_color):
         """
         Method for displaying all buttons of btn_list attribute
+        :param back_color:
         :param window: Pygame Surface object
         """
         for btn in self.btn_list:
@@ -73,14 +74,14 @@ class Menu:
             text = self.font.render(btn.txt, 1, (0, 0, 0))
             window.blit(text, (txt_pos[0], txt_pos[1]))
 
-    def btn_clicked(self, mouse):
+    def btn_clicked(self, event):
         """
         Check all button of the menu to see if they get clicked
-        :param mouse: pygame Mouse's events
+        :param event: pygame Mouse's events
         :return:
         """
         for btn in self.btn_list:
-            if btn.clicked(mouse):
+            if btn.clicked(event):
                 return btn.id
 
         return None
@@ -97,7 +98,7 @@ class Menu:
 
         lvl_id = str(lvl_id)
 
-        level = Button(2, pos_1, pos_2, 50, 100, lvl_id)
+        level = Button(4, pos_1, pos_2, 50, 100, lvl_id)
 
         square = pygame.Rect(level.pos[0], level.pos[1], level.width, level.height)
         color = (0, 0, 0)
@@ -119,7 +120,7 @@ class Menu:
     @staticmethod
     def display_background(window):
         """
-        Display the display_background of the Menu
+        Display the background of the Menu
         :return:
         """
         window.fill((0, 0, 0))
@@ -138,7 +139,6 @@ class Menu:
 
 class Button:
     def __init__(self, btn_id, x, y, height, width, txt=""):
-        self.state = False
         self.id = btn_id
         self.pos = (x, y)
         self.height = height
