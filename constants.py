@@ -3,6 +3,12 @@ File to stock all constants needed by the game.
 """
 from pygame.locals import *
 
+# DIRECTION
+UP = 0
+LEFT = 1
+DOWN = 2
+RIGHT = 3
+
 # COLOR CODES
 BTN = (34, 139, 34)
 BTN_CLICKED = (0, 100, 0)

@@ -72,15 +72,15 @@ class Level:
             color = (0, 0, 0)
             pygame.draw.rect(window, color, square)
 
-    def get_constraints(self, player, direction):
+    def get_constraints(self, entity, direction):
         """
         Method to check for each wall if the player is touching it
-        :param player:
+        :param entity:
         :param direction:
         :return:
         """
         for wall in self.wall_list:
-            c = wall.get_constraints(player, direction)
+            c = wall.get_constraint(entity, direction)
             if c is not None:
                 return c
         return None
@@ -92,8 +92,8 @@ class Level:
         :return:
         """
         for bullet in self.bullets:
-            square = pygame.Rect(bullet.pos[0], bullet.pos[1], 20, 4)
-            color = (0, 255, 0)
+            square = pygame.Rect(bullet.pos[0], bullet.pos[1], bullet.size[0], bullet.size[1])
+            color = bullet.color
             pygame.draw.rect(window, color, square)
 
     def update_sprites(self, window, player):
@@ -102,7 +102,7 @@ class Level:
         :return:
         """
         for bullet in self.bullets:
-            bullet.update()
+            bullet.move(self)
 
         # Graphics Update for all elements on screen
         self.display_background(window)

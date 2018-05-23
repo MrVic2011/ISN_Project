@@ -3,6 +3,7 @@ import pygame
 
 from constants import *
 from core.Bullet import Bullet
+from core.Enemy import Enemy
 from core.Level import Level
 from core.Menu import Menu
 from core.Player import Player
@@ -24,6 +25,7 @@ def main():
     config = True
     lvl_nbr = 1
     keys = KEYS_1
+    skeys = KEYS_2
 
     while config:
         menu.update(screen, lvl_nbr)
@@ -48,19 +50,30 @@ def main():
 
     # Level Initialization
     level = Level(lvl_nbr)
-    player = Player(50, 125, 1.5)
+    player = Player(50, 100, 1.5)
+
+    # Enemies Spawn
+    enemies = []
+    for i in range(0, 10):
+        enemy = Enemy(level)
+        enemies.append(enemy)
 
     # Game
     while game:
         level.update_sprites(screen, player)
+
+        for e in enemies:
+            e.move(level)
+            e.display(screen)
 
         pygame.display.flip()
 
         for event in pygame.event.get():
             if event.type == QUIT:
                 game = False
-            if event.type == KEYDOWN and event.key == K_F1:
-                game = False
+            if event.type == KEYDOWN:
+                if event.key == K_F1:
+                    game = False
 
             # PLayer movement event check
             if event.type == KEYDOWN:
@@ -84,8 +97,22 @@ def main():
                     player.statement_keys[3] = False
 
             if event.type == KEYDOWN and event.key == K_SPACE:
-                tmp = Bullet(player)
+                tmp = Bullet(player, 1)
                 level.bullets.append(tmp)
+
+            if event.type == KEYDOWN:
+                if event.key == skeys[0]:
+                    tmp = Bullet(player, 2, UP)
+                    level.bullets.append(tmp)
+                if event.key == skeys[1]:
+                    tmp = Bullet(player, 2, LEFT)
+                    level.bullets.append(tmp)
+                if event.key == skeys[2]:
+                    tmp = Bullet(player, 2, DOWN)
+                    level.bullets.append(tmp)
+                if event.key == skeys[3]:
+                    tmp = Bullet(player, 2, RIGHT)
+                    level.bullets.append(tmp)
 
         if player.statement_keys != [False] * 4:
             player.move(level)

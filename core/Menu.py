@@ -127,7 +127,7 @@ class Menu:
 
     def update(self, window, lvl_number):
         """
-        Method to update all elements on the menu
+        Method to move all elements on the menu
         :param lvl_number:
         :type window:
         :return:

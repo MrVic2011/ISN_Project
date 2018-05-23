@@ -1,6 +1,6 @@
 import pygame
 
-from core.Wall import Wall
+from constants import *
 
 
 class Player:
@@ -11,7 +11,7 @@ class Player:
     def __init__(self, x, y, speed):
         # PLayer statistics and state attributes
         self.pos = [x, y]
-        self.size = [50, 50]
+        self.size = [64, 64]
         self.speed = speed
         self.statement_keys = [False, False, False, False]  # Forward, Left, Backward, Right
         self.health = 100
@@ -32,28 +32,28 @@ class Player:
         """
 
         if self.statement_keys[0]:
-            c = level.get_constraints(self, Wall.UP)
+            c = level.get_constraints(self, UP)
             if c is not None:
                 self.pos[1] = c
             else:
                 self.pos[1] -= self.speed
 
         if self.statement_keys[1]:
-            c = level.get_constraints(self, Wall.LEFT)
+            c = level.get_constraints(self, LEFT)
             if c is not None:
                 self.pos[0] = c
             else:
                 self.pos[0] -= self.speed
 
         if self.statement_keys[2]:
-            c = level.get_constraints(self, Wall.DOWN)
+            c = level.get_constraints(self, DOWN)
             if c is not None:
                 self.pos[1] = c
             else:
                 self.pos[1] += self.speed
 
         if self.statement_keys[3]:
-            c = level.get_constraints(self, Wall.RIGHT)
+            c = level.get_constraints(self, RIGHT)
             if c is not None:
                 self.pos[0] = c
             else:
