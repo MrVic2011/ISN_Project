@@ -58,8 +58,8 @@ class Menu:
         for btn in self.btn_list:
             # Drawing the display_background of the button
             square = pygame.Rect(btn.pos[0], btn.pos[1], btn.width, btn.height)
-            color = back_color
-            pygame.draw.rect(window, color, square)
+            btn_color = back_color
+            pygame.draw.rect(window, btn_color, square)
 
             # Center the text of the button
             txt_size = self.font.size(btn.txt)

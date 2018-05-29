@@ -1,29 +1,46 @@
 import pygame
 
 from constants import *
+from core.Entity import Entity
 
 
-class Player:
+class Player(Entity):
     """
     Class to create a player and manage it.
     """
 
     def __init__(self, x, y, speed):
         # PLayer statistics and state attributes
-        self.pos = [x, y]
-        self.size = [64, 64]
-        self.speed = speed
+        size = (64, 64)
+        super().__init__(x, y, speed, 3, size)
         self.statement_keys = [False, False, False, False]  # Forward, Left, Backward, Right
-        self.health = 100
+        self.dir = "./assets/img/player_"
+        self.img = pygame.image.load(self.dir + "right.png")
 
     def display(self, window):
         """
-        show the player on the screen
+        Display the player on the screen
         :param window: pygame Surface object
         """
-        square = pygame.Rect(self.pos[0], self.pos[1], self.size[0], self.size[1])
-        player_color = (243, 0, 0)
-        pygame.draw.rect(window, player_color, square)
+        if self.statement_keys[0]:
+            self.img = pygame.image.load(self.dir + "up.png")
+            window.blit(self.img, self.pos)
+
+        if self.statement_keys[1]:
+            self.img = pygame.image.load(self.dir + "left.png")
+            window.blit(self.img, self.pos)
+
+        if self.statement_keys[2]:
+            self.img = pygame.image.load(self.dir + "down.png")
+            window.blit(self.img, self.pos)
+
+        if self.statement_keys[3]:
+            self.img = pygame.image.load(self.dir + "right.png")
+            window.blit(self.img, self.pos)
+
+        if self.statement_keys == [False]*4:
+            self.img = pygame.image.load(self.dir + "right.png")
+            window.blit(self.img, self.pos)
 
     def move(self, level):
         """

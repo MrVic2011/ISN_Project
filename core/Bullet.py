@@ -10,11 +10,12 @@ class Bullet(Entity):
     def __init__(self, player, speed, direction):
         self.direction = direction
         self.color = (0, 255, 0)
+        self.alpha = 255
         size = (20, 20)
 
         x, y = self.set_spawn_pos(player, size)
 
-        super().__init__(x, y, speed, size)
+        super().__init__(x, y, speed, 1, size)
 
     def set_spawn_pos(self, player, size):
         """
@@ -58,7 +59,7 @@ class Bullet(Entity):
 
     def move(self, level):
         """
-
+        Method to manage all bullets path
         :param level:
         :return:
         """
@@ -77,4 +78,4 @@ class Bullet(Entity):
             self.pos[0] += self.speed
 
         if c is not None:
-            self.color = (200, 200, 200)
+            self.alpha = 0

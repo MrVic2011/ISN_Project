@@ -1,5 +1,6 @@
 import pygame
 
+from core.Enemy import Enemy
 from core.Wall import Wall
 
 
@@ -11,6 +12,7 @@ class Level:
     def __init__(self, level_id):
         self.wall_list = []
         self.bullets = []
+        self.enemies = []
         self.id = str(level_id)
         self.file = open("./levels/lvl_" + self.id + ".txt")
 
@@ -38,6 +40,10 @@ class Level:
             file_line = self.file.readline()
 
         self.file.close()
+
+        for i in range(0, 5):
+            enemy = Enemy(self)
+            self.enemies.append(enemy)
 
     def generate_wall(self, string):
         """
@@ -91,10 +97,11 @@ class Level:
         :param window: pygame Surface object
         :return:
         """
-        for bullet in self.bullets:
-            square = pygame.Rect(bullet.pos[0], bullet.pos[1], bullet.size[0], bullet.size[1])
-            color = bullet.color
-            pygame.draw.rect(window, color, square)
+        for b in self.bullets:
+            b_rect = pygame.Surface((b.size[0], b.size[1]))
+            b_rect.set_alpha(b.alpha)
+            b_rect.fill(b.color)
+            window.blit(b_rect, (b.pos[0], b.pos[1]))
 
     def update_sprites(self, window, player):
         """

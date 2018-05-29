@@ -50,19 +50,13 @@ def main():
 
     # Level Initialization
     level = Level(lvl_nbr)
-    player = Player(50, 100, 1.5)
-
-    # Enemies Spawn
-    enemies = []
-    for i in range(0, 10):
-        enemy = Enemy(level)
-        enemies.append(enemy)
+    player = Player(50, 100, 4)
 
     # Game
     while game:
         level.update_sprites(screen, player)
 
-        for e in enemies:
+        for e in level.enemies:
             e.move(level)
             e.display(screen)
 
@@ -73,6 +67,7 @@ def main():
                 game = False
             if event.type == KEYDOWN:
                 if event.key == K_F1:
+                    message_on_screen(screen)
                     game = False
 
             # PLayer movement event check
@@ -96,10 +91,6 @@ def main():
                 if event.key == keys[3]:
                     player.statement_keys[3] = False
 
-            if event.type == KEYDOWN and event.key == K_SPACE:
-                tmp = Bullet(player, 1)
-                level.bullets.append(tmp)
-
             if event.type == KEYDOWN:
                 if event.key == skeys[0]:
                     tmp = Bullet(player, 2, UP)
@@ -118,6 +109,35 @@ def main():
             player.move(level)
 
     pygame.quit()
+
+
+def message_on_screen(window):
+    """
+    Function to display a message on full screen
+    :param window:
+    :return:
+    """
+    gameover = 1
+    while gameover:
+        window.fill((0, 0, 0))
+        font = pygame.font.Font("./assets/font/pixel.ttf", 100)
+
+        text = "Game Over !"
+        text_size = font.size(text)
+        x = (SCREEN_WIDTH - text_size[0]) / 2
+        y = (SCREEN_HEIGHT - text_size[1]) / 2
+
+        msg = font.render(text, 1, (255, 255, 255))
+        window.blit(msg, (x, y))
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                gameover = False
+            if event.type == KEYDOWN:
+                if event.key == K_F1:
+                    gameover = False
 
 
 main()
