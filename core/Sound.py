@@ -10,8 +10,8 @@ class Sound:
         self.effects_volume = 100
         self.music = "musique"
 
-    def generate_sound(self, file):
-        sound = pygame.mixer.sound(file)
+    def generate_sound(self):
+        sound = pygame.mixer.Sound("./assets/music_1.wav")
         sound.play()
         self.master_volume = pygame.mixer.music.get_volume()
         pygame.mixer.music.set_volume(10)

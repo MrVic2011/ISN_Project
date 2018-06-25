@@ -18,7 +18,7 @@ class Enemy(Entity):
 
     def set_spawn(self, level):
         """
-
+        Setting random spawn positions for enemies
         :return:
         """
         c = level.get_constraints(self, self.direction)

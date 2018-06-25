@@ -3,20 +3,25 @@ import pygame
 
 from constants import *
 from core.Bullet import Bullet
-from core.Enemy import Enemy
 from core.Level import Level
 from core.Menu import Menu
 from core.Player import Player
 
 
 # Main
+from core.Sound import Sound
+
+
 def main():
     """
     Main process of the game.
-    Execute all classes and manage event returned by pygame
+    Execute all classes and manage event returned by pygame.
     """
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    sound = Sound()
+    sound.generate_sound()
 
     # Menu
     menu = Menu()
@@ -113,8 +118,9 @@ def main():
 
 def message_on_screen(window):
     """
-    Function to display a message on full screen
-    :param window:
+    Function to display a message on full screen.
+    Used wehn the player loose.
+    :param window: pygame Surface object
     :return:
     """
     gameover = 1
